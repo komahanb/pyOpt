@@ -87,9 +87,17 @@ class History:
 
 			#
 			if os.path.isfile(bin_name):
-				os.remove(bin_name)
+				try:
+					os.remove(bin_name)
+				except FileNotFoundError:
+					# Another process removed the file already
+					pass
 			if os.path.isfile(cue_name):
-				os.remove(cue_name)
+				try:
+					os.remove(cue_name)
+				except FileNotFoundError:
+					# Another process removed the file already
+					pass
 			#if os.path.isfile(opt_name):
 			#	os.remove(opt_name)
 
